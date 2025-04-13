@@ -18,13 +18,16 @@ func ConnectDb(){
 	if err!=nil{
 		log.Fatal("error loading .env ",err)
 	}
-	dsn:=os.Getenv("DB_URL")
-
-	if dsn==""{
+	psw:=os.Getenv("dbpas")
+	if psw==""{
 		log.Fatal("error missing db url")
 	}
 
-	Db,err=gorm.Open(postgres.Open(dsn),&gorm.Config{});
+	 url:="postgresql://neondb_owner:"+psw+"@ep-long-bonus-a8t1sjn8-pooler.eastus2.azure.neon.tech/neondb?sslmode=require"
+
+
+
+	Db,err=gorm.Open(postgres.Open(url),&gorm.Config{});
 
 	if err!=nil{
 		log.Fatal("error Connecting to db")
