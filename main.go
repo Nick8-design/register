@@ -16,7 +16,7 @@ func init(){
 func main(){
 	app := fiber.New()
 
-    app.Get("/register",handles.Register) 
+    app.Post("/register",handles.Register) 
 	app.Get("/login",handles.Login) 
 	app.Get("/ping",handles.Ping) 
 
